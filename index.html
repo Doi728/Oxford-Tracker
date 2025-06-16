@@ -426,29 +426,33 @@
                     <textarea
                       className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                       rows="4"
-                      placeholder="เช่น: หมายถึง 'ดูดซึม' ใช้ในประโยค 'Plants absorb water through their roots.'"
+                      placeholder="เช่น : หมายถึง 'ดูดซึม' ใช้ในประโยค 'Plants absorb water through their roots.'"
                       value={userNote}
                       onChange={(e) => setUserNote(e.target.value)}
                     />
                   </div>
                   
-                  <div className="flex space-x-3">
+                  <div className="flex space-x-3 dialog-buttons"> {/* เพิ่ม class dialog-buttons ตามที่เคยแนะนำไปแล้ว */}
                     <button
                       onClick={() => markAsLearned(currentWord)}
-                      className="flex-1 bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors"
+                      className="flex-1 bg-green-500 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition-colors
+                                 flex items-center justify-center gap-2" /* <--- เพิ่มตรงนี้ */
                     >
-                      {renderLucideIcon('check', 'inline-block mr-2 h-4 w-4')}ทำเครื่องหมายว่าท่องแล้ว
+                      {renderLucideIcon('check', 'h-4 w-4')} {/* ลบ 'inline-block mr-2' ออก เพราะ 'gap-2' จะจัดการระยะห่างให้ */}
+                      ทำเครื่องหมายว่าท่องแล้ว
                     </button>
                     <button
                       onClick={() => {
                         setCurrentWord(null);
                         setUserNote('');
                       }}
-                      className="flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400 transition-colors"
+                      className="flex-1 bg-gray-300 text-gray-700 py-2 px-4 rounded-lg hover:bg-gray-400 transition-colors
+                                 flex items-center justify-center gap-2" /* <--- เพิ่มตรงนี้ */
                     >
                       ยกเลิก
                     </button>
                   </div>
+
                 </div>
               </div>
             )}
